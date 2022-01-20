@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { OmdbService } from '../../service/omdb.service'
-import { Film } from '../../model/film.model';
+import { Omdb, Film } from '../../model/film.model';
+import { EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-form-search',
@@ -10,21 +11,21 @@ import { Film } from '../../model/film.model';
 export class FormSearchComponent implements OnInit {
 
 	films: Film[] = [];
-	value: string = "";
+	name: string = "";
+	type: string = "movie";
+
+	@Output() onFilmSearch: EventEmitter<Film[]> = new EventEmitter();
 
 	constructor(private omdbService: OmdbService) { }
 
 	ngOnInit(): void {
 	}
 
-	getFilms(name: string, type: string, page: string): void {
-		this.omdbService.getFilms(name, type, page).subscribe((films: Film[]) => {
-			this.films = films;
-			console.log(this.films);
-			console.log(this.value);
+	getFilms(): void {
+		this.omdbService.getFilms(this.name, this.type, "1").subscribe((films: Omdb) => {
+			this.films = films.Search;
+			this.onFilmSearch.emit(this.films);
 		})
 	}
-
-
 
 }

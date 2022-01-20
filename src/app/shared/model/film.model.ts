@@ -1,5 +1,10 @@
+export interface Omdb {
+	Response: string,
+	Search: Film[],
+	totalResult: string
+}
+
 export interface Film {
-	email: string,
 	Title: string,
 	Year: string,
 	imdbID: string,

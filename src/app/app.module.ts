@@ -6,11 +6,13 @@ import { FormSearchComponent } from './shared/components/form-search/form-search
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FilmItemComponent } from './shared/components/film-item/film-item.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		FormSearchComponent,
+		FilmItemComponent,
 
 	],
 	imports: [
