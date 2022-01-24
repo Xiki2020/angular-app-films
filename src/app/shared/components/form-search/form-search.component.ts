@@ -13,6 +13,7 @@ export class FormSearchComponent implements OnInit {
 	films: Film[] = [];
 	name: string = "";
 	type: string = "movie";
+  isDisabled!: boolean;
 
 	@Output() onFilmSearch: EventEmitter<Film[]> = new EventEmitter();
 
@@ -21,11 +22,13 @@ export class FormSearchComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	getFilms(): void {
+	public getFilms(): void {
+    this.isDisabled = true;
 		this.omdbService.getFilms(this.name, this.type, "1").subscribe((films: Omdb) => {
 			this.films = films.Search;
 			this.onFilmSearch.emit(this.films);
 		})
+    this.isDisabled = false;
 	}
 
 }

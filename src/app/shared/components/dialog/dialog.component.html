@@ -1,0 +1,9 @@
+<p *ngIf="isLoading">Идет Загрузка</p>
+<div class="dialog"
+	  *ngIf="!isLoading">
+	<h1>{{detailsFilm?.Title}}</h1>
+	<div mat-dialog-actions>
+		<button mat-button
+				  (click)="onNoClick()">Close</button>
+	</div>
+</div>

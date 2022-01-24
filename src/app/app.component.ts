@@ -10,7 +10,7 @@ export class AppComponent {
 	films: Film[] = [];
 	title = 'project-films';
 
-	getFilms(films: Film[]) {
+	public getFilms(films: Film[]) {
 		this.films = films;
 	}
 }

@@ -7,20 +7,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FilmItemComponent } from './shared/components/film-item/film-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './shared/components/dialog/dialog.component';
+import {MatButtonModule} from "@angular/material/button";
+
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		FormSearchComponent,
 		FilmItemComponent,
-
+    DialogComponent,
 	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		HttpClientModule,
-		FormsModule,
-	],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
 	providers: [],
 	bootstrap: [AppComponent]
 })
