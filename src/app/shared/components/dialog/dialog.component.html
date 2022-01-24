@@ -2,8 +2,5 @@
 <div class="dialog"
 	  *ngIf="!isLoading">
 	<h1>{{detailsFilm?.Title}}</h1>
-	<div mat-dialog-actions>
-		<button mat-button
-				  (click)="onNoClick()">Close</button>
-	</div>
+	<button (click)="onNoClick()">Close</button>
 </div>
