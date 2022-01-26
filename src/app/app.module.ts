@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { FilmItemComponent } from './shared/components/film-item/film-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/components/dialog/dialog.component';
-import {MatButtonModule} from "@angular/material/button";
+import { MatButtonModule } from "@angular/material/button";
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -17,16 +18,17 @@ import {MatButtonModule} from "@angular/material/button";
 		AppComponent,
 		FormSearchComponent,
 		FilmItemComponent,
-    DialogComponent,
+		DialogComponent,
 	],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    MatButtonModule,
-  ],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		FormsModule,
+		MatDialogModule,
+		MatButtonModule,
+		MatPaginatorModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent]
 })

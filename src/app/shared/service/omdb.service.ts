@@ -23,11 +23,11 @@ export class OmdbService {
 		return this.httpClient.get<Omdb>(API_URL + new URLSearchParams(queryParams));
 	}
 
-  public getFilmById(id: string): Observable<DetailFilm> {
-    const queryParams = {
-      apiKey: API_KEY,
-      i: id,
-    };
-    return this.httpClient.get<DetailFilm>(API_URL + new URLSearchParams(queryParams));
-  }
+	public getFilmById(id: string): Observable<DetailFilm> {
+		const queryParams = {
+			apiKey: API_KEY,
+			i: id,
+		};
+		return this.httpClient.get<DetailFilm>(API_URL + new URLSearchParams(queryParams));
+	}
 }

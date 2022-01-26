@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { OmdbService } from '../../service/omdb.service'
 import { Omdb, Film } from '../../model/film.model';
 import { EventEmitter } from '@angular/core';
@@ -10,25 +10,32 @@ import { EventEmitter } from '@angular/core';
 })
 export class FormSearchComponent implements OnInit {
 
-	films: Film[] = [];
+	data!: Omdb;
 	name: string = "";
 	type: string = "movie";
-  isDisabled!: boolean;
+	isDisabled!: boolean;
 
-	@Output() onFilmSearch: EventEmitter<Film[]> = new EventEmitter();
+	@Input() pageIndex!: string;
+	@Output() onFilmSearch: EventEmitter<Omdb> = new EventEmitter();
 
 	constructor(private omdbService: OmdbService) { }
 
 	ngOnInit(): void {
 	}
 
-	public getFilms(): void {
-    this.isDisabled = true;
-		this.omdbService.getFilms(this.name, this.type, "1").subscribe((films: Omdb) => {
-			this.films = films.Search;
-			this.onFilmSearch.emit(this.films);
+	ngOnChanges(changes: SimpleChanges) {
+		if (this.pageIndex) {
+			this.getFilms(this.pageIndex);
+		}
+	}
+
+	public getFilms(pageIndex: string): void {
+		this.isDisabled = true;
+		this.omdbService.getFilms(this.name, this.type, pageIndex).subscribe((data: Omdb) => {
+			this.data = data;
+			this.onFilmSearch.emit(this.data);
+			this.isDisabled = false;
 		})
-    this.isDisabled = false;
 	}
 
 }

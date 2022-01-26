@@ -1,5 +1,14 @@
-<app-form-search (onFilmSearch)="getFilms($event)"></app-form-search>
-<div class="films">
-  <app-film-item *ngFor="let film of films"
-                 [film]="film"></app-film-item>
+<app-form-search [pageIndex]="pageIndex"
+					  (onFilmSearch)="getFilms($event)"></app-form-search>
+<div *ngIf="error">{{error}}</div>
+<div class="films"
+	  *ngIf="!error">
+	<app-film-item *ngFor="let film of films"
+						[film]="film"></app-film-item>
 </div>
+<mat-paginator *ngIf="films?.length && !error"
+					[length]="length"
+					[pageSize]="10"
+					[pageSizeOptions]="[10]"
+					aria-label="Select page"
+					(page)="getEventsData($event)"></mat-paginator>
